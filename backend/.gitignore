@@ -1,0 +1,22 @@
+﻿# Dependencies
+node_modules/
+dist/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Upload directory
+uploads/*
+!uploads/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
