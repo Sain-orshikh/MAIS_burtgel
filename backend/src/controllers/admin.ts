@@ -30,7 +30,7 @@ export const adminController = {
 
       // Check if admin already exists
       const existingAdmin = await Admin.findOne({
-        '\': [{ username }, { email }]
+        $or: [{ username }, { email }]
       });
 
       if (existingAdmin) {

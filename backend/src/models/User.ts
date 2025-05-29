@@ -1,6 +1,7 @@
 ﻿import { Schema, model, Document } from 'mongoose';
 
 export interface IUser extends Document {
+  registrationNumber: number;
   name: string;
   email: string;
   phoneNumber: string;
@@ -20,6 +21,11 @@ export interface IUser extends Document {
 }
 
 const userSchema = new Schema({
+  registrationNumber: {
+    type: Number,
+    unique: true,
+    required: true
+  },
   name: {
     type: String,
     required: [true, 'Name is required'],
@@ -79,6 +85,19 @@ const userSchema = new Schema({
   }
 }, {
   timestamps: true
+});
+
+// Auto-increment registrationNumber before saving
+userSchema.pre('save', async function(this: IUser, next) {
+  if (this.isNew) {
+    try {
+      const lastUser = await model<IUser>('User').findOne({}, {}, { sort: { registrationNumber: -1 } });
+      this.registrationNumber = lastUser ? lastUser.registrationNumber + 1 : 1;
+    } catch (error) {
+      return next(error as Error);
+    }
+  }
+  next();
 });
 
 export default model<IUser>('User', userSchema);

@@ -63,7 +63,7 @@ export default function GeneralInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your full name'
           />
           {errors.name && <p className='mt-1 text-sm text-red-500'>{errors.name}</p>}
@@ -81,7 +81,7 @@ export default function GeneralInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your email address'
           />
           {errors.email && <p className='mt-1 text-sm text-red-500'>{errors.email}</p>}
@@ -99,7 +99,7 @@ export default function GeneralInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your phone number'
           />
           {errors.phoneNumber && <p className='mt-1 text-sm text-red-500'>{errors.phoneNumber}</p>}
@@ -117,7 +117,7 @@ export default function GeneralInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your national registration number'
           />
           {errors.nationalRegistrationNumber && (

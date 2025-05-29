@@ -10,6 +10,7 @@ export interface PaymentConfirmation {
 
 export interface User {
   id: string;
+  registrationNumber: number;
   name: string;
   email: string;
   phoneNumber: string;
@@ -44,6 +45,13 @@ export interface AdminUser {
 export interface LoginCredentials {
   username: string;
   password: string;
+}
+
+export interface CreateAdminForm {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export interface AuthResponse {

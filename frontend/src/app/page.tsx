@@ -1,53 +1,90 @@
-﻿import RegistrationForm from '@/components/registration/RegistrationForm';
+﻿'use client';
+
+import RegistrationForm from '@/components/registration/RegistrationForm';
+import RegistrationStatus from '@/components/registration/RegistrationStatus';
+import { useState } from 'react';
+import Image from 'next/image';
+import logoImage from '@/assets/logo.jpg';
 
 export default function Home() {
+  const [activeView, setActiveView] = useState<'register' | 'status'>('register');
+
   return (
-    <main className='min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50'>
-      {/* Animated Background Elements */}
+    <main className='min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'>
+      {/* Animated Background Elements - Academic Theme */}
       <div className='absolute inset-0 overflow-hidden'>
-        <div className='absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse'></div>
-        <div className='absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000'></div>
-        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000'></div>
+        <div className='absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-pulse'></div>
+        <div className='absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-full mix-blend-multiply filter blur-xl opacity-12 animate-pulse animation-delay-2000'></div>
+        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-4000'></div>
+        
+        {/* Academic Pattern Overlay */}
+        <div className='absolute inset-0 opacity-5'>
+          <div className='absolute top-20 left-20 w-32 h-32 border-2 border-blue-700 rounded-full'></div>
+          <div className='absolute bottom-32 right-32 w-24 h-24 border-2 border-emerald-600 rounded-full'></div>
+          <div className='absolute top-1/3 right-1/4 w-16 h-16 border-2 border-amber-600 transform rotate-45'></div>
+          <div className='absolute bottom-1/3 left-1/4 w-20 h-20 border-2 border-blue-700 transform rotate-12'></div>
+        </div>
       </div>
 
       {/* Header Section */}
       <div className='relative z-10 pt-16 pb-8'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center'>
-            <div className='inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6 shadow-lg'>
-              <svg className='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' />
-              </svg>
+            <div className='inline-flex items-center justify-center w-24 h-24 mb-6 shadow-xl rounded-full overflow-hidden bg-white'>
+              <Image
+                src={logoImage}
+                alt="Mongol Aspiration International School Logo"
+                width={96}
+                height={96}
+                className='object-cover w-full h-full'
+                priority
+              />
             </div>
-            <h1 className='text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight'>
-              <span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
-                Student Registration
+            <h1 className='text-5xl md:text-6xl font-bold text-slate-800 mb-4 leading-tight'>
+              <span className='bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 bg-clip-text text-transparent'>
+                Mongol Aspiration International School
               </span>
             </h1>
-            <p className='text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed'>
-              Begin your academic journey with us. Complete the registration process to secure your place in our institution.
+            <h2 className='text-2xl md:text-3xl font-semibold text-emerald-700 mb-6'>
+              Entry Examination Registration
+            </h2>
+            <p className='text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed'>
+              Join the prestigious Mongol Aspiration International School community. Register for our comprehensive entry examination 
+              and take the first step towards academic excellence and global opportunities.
             </p>
             
-            {/* Feature highlights */}
-            <div className='flex flex-wrap justify-center gap-6 mb-12'>
-              <div className='flex items-center bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm'>
-                <svg className='w-5 h-5 text-green-500 mr-2' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clipRule='evenodd' />
-                </svg>
-                <span className='text-sm font-medium text-gray-700'>Quick & Easy</span>
-              </div>
-              <div className='flex items-center bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm'>
-                <svg className='w-5 h-5 text-blue-500 mr-2' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z' clipRule='evenodd' />
-                </svg>
-                <span className='text-sm font-medium text-gray-700'>Secure</span>
-              </div>
-              <div className='flex items-center bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm'>
-                <svg className='w-5 h-5 text-purple-500 mr-2' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                </svg>
-                <span className='text-sm font-medium text-gray-700'>Instant Confirmation</span>
-              </div>
+            {/* Action Buttons */}
+            <div className='flex flex-col sm:flex-row justify-center gap-4 mb-12'>
+              <button
+                onClick={() => setActiveView('register')}
+                className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+                  activeView === 'register'
+                    ? 'bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-xl'
+                    : 'bg-white/90 backdrop-blur-sm text-slate-700 hover:bg-white shadow-lg'
+                }`}
+              >
+                <div className='flex items-center justify-center'>
+                  <svg className='w-6 h-6 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z' />
+                  </svg>
+                  Register for Exam
+                </div>
+              </button>
+              <button
+                onClick={() => setActiveView('status')}
+                className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
+                  activeView === 'status'
+                    ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-xl'
+                    : 'bg-white/90 backdrop-blur-sm text-slate-700 hover:bg-white shadow-lg'
+                }`}
+              >
+                <div className='flex items-center justify-center'>
+                  <svg className='w-6 h-6 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' />
+                  </svg>
+                  Check Application Status
+                </div>
+              </button>
             </div>
           </div>
         </div>
@@ -56,28 +93,35 @@ export default function Home() {
       {/* Registration Form Section */}
       <div className='relative z-10 pb-16'>
         <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 overflow-hidden'>
-            <div className='bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6'>
+          <div className='bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden'>
+            <div className={`px-8 py-6 ${
+              activeView === 'register' 
+                ? 'bg-gradient-to-r from-blue-700 to-indigo-800' 
+                : 'bg-gradient-to-r from-emerald-600 to-teal-700'
+            }`}>
               <h2 className='text-2xl font-bold text-white text-center'>
-                Registration Form
+                {activeView === 'register' ? 'MAIS Entry Examination' : 'Application Status Portal'}
               </h2>
-              <p className='text-blue-100 text-center mt-2'>
-                Please fill out all required information
+              <p className='text-blue-100 text-center mt-2 font-medium'>
+                {activeView === 'register' 
+                  ? 'Complete your registration for Mongol Aspiration International School entry examination' 
+                  : 'Track your application progress and view examination details'
+                }
               </p>
             </div>
-            <div className='p-8'>
-              <RegistrationForm />
+            <div className='p-8 bg-gradient-to-b from-slate-50 to-white'>
+              {activeView === 'register' ? <RegistrationForm /> : <RegistrationStatus />}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Progress indicator dots */}
+      {/* Progress Indicator */}
       <div className='fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20'>
-        <div className='flex space-x-2'>
-          <div className='w-2 h-2 bg-blue-400 rounded-full animate-pulse'></div>
-          <div className='w-2 h-2 bg-indigo-400 rounded-full animate-pulse animation-delay-1000'></div>
-          <div className='w-2 h-2 bg-purple-400 rounded-full animate-pulse animation-delay-2000'></div>
+        <div className='flex space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg'>
+          <div className='w-3 h-3 bg-blue-600 rounded-full animate-pulse'></div>
+          <div className='w-3 h-3 bg-emerald-600 rounded-full animate-pulse animation-delay-1000'></div>
+          <div className='w-3 h-3 bg-amber-500 rounded-full animate-pulse animation-delay-2000'></div>
         </div>
       </div>
     </main>

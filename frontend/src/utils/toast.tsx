@@ -8,41 +8,31 @@ interface ToastProps {
 }
 
 export const showToast = ({ message, type }: ToastProps) => {
-  // Set background color based on toast type
-  const bgColor = type === 'success' 
-    ? 'bg-green-500' 
-    : type === 'error' 
-      ? 'bg-red-500' 
-      : 'bg-blue-500';
-  
-  return toast.custom((t) => (
-    <div
-      className={`${
-        t.visible ? 'animate-enter' : 'animate-leave'
-      } max-w-md w-full ${bgColor} shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-opacity-20`}
-    >
-      <div className="flex-1 w-0 p-4">
-        <div className="flex items-start">
-          <div className="ml-3 flex-1">
-            <p className="text-sm font-medium text-white">
-              {message}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <button
-          onClick={() => toast.dismiss(t.id)}
-          className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-white hover:text-gray-200 focus:outline-none"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  ), {
+  const options = {
     duration: type === 'success' ? 2000 : 3000,
-    position: type === 'success' ? 'bottom-center' : 'top-center',
-  });
+    position: 'top-center' as const,
+    style: {
+      background: type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6',
+      color: '#ffffff',
+      fontWeight: '500',
+      borderRadius: '8px',
+      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    },
+    iconTheme: {
+      primary: '#ffffff',
+      secondary: type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6',
+    },
+  };
+
+  switch (type) {
+    case 'success':
+      return toast.success(message, options);
+    case 'error':
+      return toast.error(message, options);
+    case 'info':
+    default:
+      return toast(message, options);
+  }
 };
 
 export default showToast;

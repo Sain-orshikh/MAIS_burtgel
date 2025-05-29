@@ -77,7 +77,7 @@ export default function SchoolInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your school name'
           />
           {errors.schoolName && <p className='mt-1 text-sm text-red-500'>{errors.schoolName}</p>}
@@ -98,7 +98,7 @@ export default function SchoolInfoStep() {
             onChange={handleChange}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
             placeholder='Enter your average grade'
           />
           {errors.averageGrade && <p className='mt-1 text-sm text-red-500'>{errors.averageGrade}</p>}

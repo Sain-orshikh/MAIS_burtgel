@@ -23,6 +23,17 @@ export const useLogin = () => {
   });
 };
 
+export const useCreateAdmin = () => {
+  const { token } = useAuthStore();
+
+  return useMutation({
+    mutationFn: async ({ username, email, password }: { username: string; email: string; password: string }) => {
+      if (!token) throw new Error('No authentication token available');
+      return apiClient.createAdmin(username, email, password, token);
+    }
+  });
+};
+
 // Admin Data Hooks
 export const useRegistrations = () => {
   const { token } = useAuthStore();

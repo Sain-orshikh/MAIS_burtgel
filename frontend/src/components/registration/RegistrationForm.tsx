@@ -70,7 +70,7 @@ export default function RegistrationForm() {
     // Show success toast when moving forward
     if (newDirection > 0) {
       showToast({ 
-        message: 'Successfully saved! Moving to the next step.', 
+        message: 'Successfull! Moving to the next step.', 
         type: 'success' 
       });
     }

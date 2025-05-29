@@ -58,7 +58,7 @@ export default function EssayStep() {
           onChange={handleChange}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setIsInputFocused(false)}
-          className={`flex-grow w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none`}
+          className={`flex-grow w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none`}
           placeholder='Write your essay here...'
         />
 

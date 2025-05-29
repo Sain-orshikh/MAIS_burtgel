@@ -72,7 +72,8 @@ export default function RegistrationList() {
       const searchMatch = searchTerm === '' || 
         user.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.school.name.toLowerCase().includes(searchTerm.toLowerCase());
+        user.school.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.registrationNumber.toString().includes(searchTerm);
 
       // Apply status filter
       const statusMatch = statusFilter === 'all' || user.status === statusFilter;
@@ -157,7 +158,7 @@ export default function RegistrationList() {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', mb: 3, gap: 2 }}>
         <TextField
           variant="outlined"
-          placeholder="Search applications..."
+          placeholder="Search by name, email, school, or registration #..."
           size="small"
           value={searchTerm}
           onChange={handleSearchChange}

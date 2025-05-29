@@ -111,6 +111,7 @@ export function generateMockUsers(count: number): User[] {
       updatedDate.setDate(updatedDate.getDate() + getRandomInt(1, 5));
     }    users.push({
       id: `user_${i}_${Math.random().toString(36).substring(2, 10)}`,
+      registrationNumber: i, // Sequential registration number starting from 1
       name: fullName,
       email: generateEmail(firstName, lastName),
       phoneNumber: generatePhoneNumber(),

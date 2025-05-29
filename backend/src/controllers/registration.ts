@@ -29,7 +29,7 @@ export const registrationController = {
 
       // Check if user already exists
       const existingUser = await User.findOne({
-        '\': [
+        $or: [
           { email: req.body.email },
           { nationalRegistrationNumber: req.body.nationalRegistrationNumber }
         ]
@@ -65,6 +65,7 @@ export const registrationController = {
         message: 'Registration successful',
         user: {
           id: user._id,
+          registrationNumber: user.registrationNumber,
           name: user.name,
           email: user.email,
           status: user.status
@@ -100,6 +101,7 @@ export const registrationController = {
         message: 'Status updated successfully',
         user: {
           id: user._id,
+          registrationNumber: user.registrationNumber,
           name: user.name,
           email: user.email,
           status: user.status
@@ -115,7 +117,7 @@ export const registrationController = {
     try {
       const users = await User.find({})
         .select('-essay')
-        .sort({ createdAt: -1 });
+        .sort({ registrationNumber: 1 }); // Sort by registration number ascending (1, 2, 3...)
 
       res.json(users);
     } catch (error) {

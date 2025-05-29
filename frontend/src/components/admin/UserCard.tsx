@@ -98,13 +98,17 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
         <div 
           className="p-5 cursor-pointer"
           onClick={handleOpenModal}
-        >
-          <div className="flex justify-between items-start mb-3">
-            <span
-              className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusBadgeClass(user.status)}`}
-            >
-              {user.status.charAt(0).toUpperCase() + user.status.slice(1)}
-            </span>
+        >          <div className="flex justify-between items-start mb-3">
+            <div className="flex items-center gap-2">
+              <span
+                className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusBadgeClass(user.status)}`}
+              >
+                {user.status.charAt(0).toUpperCase() + user.status.slice(1)}
+              </span>
+              <span className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full">
+                #{user.registrationNumber}
+              </span>
+            </div>
             <button
               type="button"
               aria-label="View details"
@@ -146,9 +150,11 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
             <Box>
               <Typography id="modal-title" variant="h6" component="h2">
                 {user.name}
+              </Typography>              <Typography variant="body2" color="text.secondary">
+                Application ID: {user.id}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Application ID: {user.id}
+                Registration #: {user.registrationNumber}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -182,8 +188,11 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
           <Box role="tabpanel" hidden={tabValue !== 0} sx={{ mt: 2 }}>
             {tabValue === 0 && (
               <Box>
-                <Typography variant="subtitle2" sx={{ mb: 1 }}>Contact Information</Typography>
-                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+                <Typography variant="subtitle2" sx={{ mb: 1 }}>Contact Information</Typography>                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+                  <Box>
+                    <Typography variant="body2" color="text.secondary">Registration Number</Typography>
+                    <Typography variant="body1">#{user.registrationNumber}</Typography>
+                  </Box>
                   <Box>
                     <Typography variant="body2" color="text.secondary">Email</Typography>
                     <Typography variant="body1">{user.email}</Typography>
@@ -272,8 +281,7 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
           </Box>
           
           <Divider sx={{ my: 2 }} />
-          
-          {/* Action Buttons for Status Change */}
+            {/* Action Buttons for Status Change */}
           {user.status === 'pending' && onStatusChange && (
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 2 }}>
               {showConfirmation === 'approve' ? (
@@ -285,7 +293,7 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
                     size="small"
                   >
                     Confirm Approval
-                  </Button>
+                  </Button>                  
                   <Button 
                     variant="outlined"
                     onClick={() => setShowConfirmation(null)}
@@ -294,46 +302,43 @@ export default function UserCard({ user, onStatusChange }: UserCardProps) {
                     Cancel
                   </Button>
                 </Box>
-              ) : (
-                <Button 
-                  variant="contained" 
-                  color="success"
-                  onClick={() => setShowConfirmation('approve')}
-                  size="small"
-                >
-                  Approve
-                </Button>
-              )}
-              
-              {showConfirmation === 'reject' ? (
-                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '300px' }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, mt: 1 }}>
-                    <Button 
-                      variant="outlined"
-                      onClick={() => setShowConfirmation(null)}
-                      size="small"
-                    >
-                      Cancel
-                    </Button>                    
-                    <Button 
-                      variant="contained" 
-                      color="error"
-                      onClick={handleReject}
-                      size="small"
-                    >
-                      Confirm Rejection
-                    </Button>
-                  </Box>
+              ) : showConfirmation === 'reject' ? (
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                  <Button 
+                    variant="outlined"
+                    onClick={() => setShowConfirmation(null)}
+                    size="small"
+                  >
+                    Cancel
+                  </Button>                    
+                  <Button 
+                    variant="contained" 
+                    color="error"
+                    onClick={handleReject}
+                    size="small"
+                  >
+                    Confirm Rejection
+                  </Button>
                 </Box>
               ) : (
-                <Button 
-                  variant="contained" 
-                  color="error"
-                  onClick={() => setShowConfirmation('reject')}
-                  size="small"
-                >
-                  Reject
-                </Button>
+                <>
+                  <Button 
+                    variant="contained" 
+                    color="success"
+                    onClick={() => setShowConfirmation('approve')}
+                    size="small"
+                  >
+                    Approve
+                  </Button>
+                  <Button 
+                    variant="contained" 
+                    color="error"
+                    onClick={() => setShowConfirmation('reject')}
+                    size="small"
+                  >
+                    Reject
+                  </Button>
+                </>
               )}
             </Box>
           )}
