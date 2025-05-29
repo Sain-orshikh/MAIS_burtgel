@@ -1,14 +1,13 @@
-﻿'use client';
+'use client';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-// Auto-redirect to dashboard for development
-export default function AdminLoginPage() {
+export default function AdminRedirectPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Skip login for development purposes
+    // Automatically redirect to the dashboard
     router.push('/admin/dashboard');
   }, [router]);
 
