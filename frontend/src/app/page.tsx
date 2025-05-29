@@ -11,13 +11,12 @@ export default function Home() {
 
   return (
     <main className='min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'>
-      {/* Animated Background Elements - Academic Theme */}
+      {/* Animated Background Elements - Academic Theme 
       <div className='absolute inset-0 overflow-hidden'>
         <div className='absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-pulse'></div>
         <div className='absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-full mix-blend-multiply filter blur-xl opacity-12 animate-pulse animation-delay-2000'></div>
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-4000'></div>
         
-        {/* Academic Pattern Overlay */}
         <div className='absolute inset-0 opacity-5'>
           <div className='absolute top-20 left-20 w-32 h-32 border-2 border-blue-700 rounded-full'></div>
           <div className='absolute bottom-32 right-32 w-24 h-24 border-2 border-emerald-600 rounded-full'></div>
@@ -25,6 +24,7 @@ export default function Home() {
           <div className='absolute bottom-1/3 left-1/4 w-20 h-20 border-2 border-blue-700 transform rotate-12'></div>
         </div>
       </div>
+      */}
 
       {/* Header Section */}
       <div className='relative z-10 pt-16 pb-8'>
@@ -48,13 +48,8 @@ export default function Home() {
             <h2 className='text-2xl md:text-3xl font-semibold text-emerald-700 mb-6'>
               Entry Examination Registration
             </h2>
-            <p className='text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed'>
-              Join the prestigious Mongol Aspiration International School community. Register for our comprehensive entry examination 
-              and take the first step towards academic excellence and global opportunities.
-            </p>
-            
             {/* Action Buttons */}
-            <div className='flex flex-col sm:flex-row justify-center gap-4 mb-12'>
+            <div className='flex flex-col sm:flex-row justify-center gap-4 mb-6'>
               <button
                 onClick={() => setActiveView('register')}
                 className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 ${
