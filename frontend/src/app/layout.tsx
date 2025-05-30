@@ -1,38 +1,35 @@
-﻿'use client';
+﻿import { Metadata } from 'next';
+import './globals.css';
+import ClientProviders from '@/components/ClientProviders';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { useState } from 'react';
-import './globals.css'; // Make sure this is being loaded
-import { Toaster } from 'react-hot-toast';
-
-// Note: metadata can't be exported from a client component
-// This will be handled by the Next.js default metadata
+export const metadata: Metadata = {
+  title: 'Mongol Aspiration International School',
+  description: 'Entry Examination Registration System',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' }
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-          },
-        },
-      })
-  );
-
   return (
     <html lang='en'>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1748610861" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1748610861" />
+      </head>
       <body>
-        <QueryClientProvider client={queryClient}>
+        <ClientProviders>
           {children}
-          <Toaster />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        </ClientProviders>
       </body>
     </html>
   );

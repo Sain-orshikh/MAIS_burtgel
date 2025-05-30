@@ -310,15 +310,7 @@ export default function RegistrationStatus() {
                 </div>
               </div>
             </div>
-          )}          {/* Action Buttons */}
-          <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <button className='px-6 py-3 bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-lg hover:from-blue-800 hover:to-indigo-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200'>
-              Download PDF
-            </button>
-            <button className='px-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 text-white rounded-lg hover:from-slate-700 hover:to-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 transition-all duration-200'>
-              Print Details
-            </button>
-          </div>
+          )} 
         </div>
       )}
     </div>

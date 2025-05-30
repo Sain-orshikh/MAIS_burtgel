@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             <h1 className='text-5xl md:text-6xl font-bold text-slate-800 mb-4 leading-tight'>
               <span className='bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 bg-clip-text text-transparent'>
-                Mongol Aspiration International School
+                Mongol Aspiration
               </span>
             </h1>
             <h2 className='text-2xl md:text-3xl font-semibold text-emerald-700 mb-6'>
